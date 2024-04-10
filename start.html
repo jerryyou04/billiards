@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Setup</title>
+</head>
+<style>
+    
+    body {
+        font-family: 'Robot', sans-serif;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%; 
+    }
+    header {
+        height: 60px; 
+    }
+    .button {
+        padding: 0; /* Removes internal padding */
+        border: none; /* Removes border */
+        background-color: transparent; /* Makes background transparent */
+        color: black; 
+        text-decoration: none; /* Removes the underline */
+        font-weight: bold; 
+        font-family: 'Lato', sans-serif;
+    }
+    .button2 {
+        background-color: rgb(204, 99, 13); /* Green background */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
+        border-radius: 2px; /* Rounded corners */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Box shadow for depth */
+        transition: all 0.3s ease 0s; /* Smooth transition for hover effect */
+    }
+    .button:hover {
+        text-decoration: none; 
+        color: rgb(255, 255, 255); /* Keeps the color consistent on hover */
+    }
+    .button2:hover {
+        background-color: rgb(226, 108, 30); /* Slightly lighter or darker shade */
+        box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3); 
+        color: white; 
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #292a2b;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-top: 5px solid rgb(204, 99, 13);
+    }
+
+    @media screen and (max-width: 600px) {
+        header {
+            padding: 10px;
+        }
+
+        .brand {
+            font-size: 0.6em;
+        }
+
+        .header-logo {
+            height: 30px;
+        }
+
+        .button {
+            font-size: 0.3em;
+        }
+
+        .brand-container {
+            font-size: 0.6em;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .brand {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: rgb(255, 255, 255); /* Sets the text color to black */
+        text-decoration: none; /* Removes the underline */
+        /* Add other styling for the brand text as needed */
+    }
+
+    .header-logo {
+        height: 40px; 
+        width: auto; /* Maintain aspect ratio */
+        margin-right: 10px; /* Space between logo and text */
+    }
+
+    .brand-container {
+        display: flex;
+        align-items: center;
+    }
+
+    
+
+    .brand:hover {
+        text-decoration: none; /* Ensures no underline appears on hover */
+        color: rgb(255, 255, 255); 
+    }
+    nav a.button {
+        margin-left: 10px;
+        color: #ffffff;
+    }
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #212124;
+        color: rgb(204, 99, 13);
+    }
+    td {
+        background-color: #424246;
+        color: rgb(255, 255, 255);
+    }
+    .info-icon {
+        display: inline-block;
+        margin-left: 5px;
+        margin-top: 5px;
+        cursor: help;
+        position: relative; /* Position relative to place the tooltip */
+        color: #ffffff;
+        background-color: rgb(204, 99, 13); /* Circle color */
+        border-radius: 50%; /* Create a circular shape */
+        width: 20px; /* Size of the circle */
+        height: 20px; /* Size of the circle */
+        text-align: center; /* Center the text inside the circle */
+        line-height: 20px; /* Center the text vertically */
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: middle;
+        transform: translateY(-3px);
+}
+
+h2 {
+    color: rgb(204, 99, 13);
+    margin-left: 20px;
+}
+
+p {
+    margin-left: 20px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 300px; 
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-style: normal; 
+    font-weight: normal;
+
+    /* Positioning */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    margin-left: -60px; 
+
+    /* Fade in effect */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.info-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+    .scrollable-section {
+        min-height: 150vh; /* Adjust this value as needed to create enough content to scroll */
+        overflow-y: auto; /* Enables vertical scrolling if the content overflows */
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgb(63, 62, 62);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    form {
+        max-width: 1250px;
+        margin: 50px auto;
+        background-color: #292a2b;
+        padding: 50px;
+        border-radius: 12.5px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    form div {
+        margin-bottom: 25px;
+    }
+    label {
+        display: block;
+        margin-bottom: 12.5px;
+        color: #ffffff;
+        font-size: 22px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 20px;
+        border: 2.5px solid #ddd;
+        border-radius: 5px;
+        font-size: 22px;
+        box-sizing: border-box;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 25px 0;
+        margin-top: 25px;
+        background-color: rgb(204, 99, 13);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
+        font-size: 32px;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: rgb(226, 108, 30);
+    }
+</style>
+<body>
+    <div class="container">
+        <h2>Enter Game Details</h2>
+        <form action="/display.html" method="post">
+            <header>
+            <div class="brand-container">
+                <a class="brand">POOL</a>
+            </div>
+            </header>
+            <div>
+                <label for="player1">Player 1 Name:</label>
+                <input type="text" id="player1" name="player1" required>
+            </div>
+            <div>
+                <label for="player2">Player 2 Name:</label>
+                <input type="text" id="player2" name="player2" required>
+            </div>
+            <div>
+                <label for="game_name">Game Name:</label>
+                <input type="text" id="game_name" name="game_name" required>
+            </div>
+            
+            <button type="submit" class="button2">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Details Display</title>
+    <style>
+         body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Robot', sans-serif;
+            background-color: #292a2b;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Use viewport height to fill the screen */
+        }
+        .content-wrapper {
+            display: flex;
+            align-items: flex-start; /* Align items at the top */
+            justify-content: center;
+            flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+            max-width: 1200px; /* Max width of the entire content wrapper */
+            margin: 20px;
+        }
+        .text-content {
+            max-width: 400px; /* Max width of the text content */
+            margin-right: 20px; /* Spacing between text content and SVG container */
+        }
+        h2 {
+            text-align: left; /* Align text to the left */
+            margin: 10px 0; /* Vertical spacing */
+            font-size: 2.5em; /* Larger font size for paragraph text */
+        }
+        p {
+            text-align: left; /* Align text to the left */
+            margin: 10px 0; /* Vertical spacing */
+            font-size: 1.5em; /* Larger font size for paragraph text */
+        }
+        #svgContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 900px;
+            height: 1575px;
+            position: relative;
+            background: rgb(105, 65, 33);
+            margin: 200px; 
+            padding: 200px; 
+            border-radius: 10px;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+    
+    body {
+        font-family: 'Robot', sans-serif;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%; 
+    }
+    header {
+        height: 60px; 
+    }
+    .button {
+        padding: 0; /* Removes internal padding */
+        border: none; /* Removes border */
+        background-color: transparent; /* Makes background transparent */
+        color: black; 
+        text-decoration: none; /* Removes the underline */
+        font-weight: bold; 
+        font-family: 'Lato', sans-serif;
+    }
+    .button2 {
+        background-color: rgb(204, 99, 13); /* Green background */
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
+        border-radius: 2px; /* Rounded corners */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Box shadow for depth */
+        transition: all 0.3s ease 0s; /* Smooth transition for hover effect */
+    }
+    .button:hover {
+        text-decoration: none; 
+        color: rgb(255, 255, 255); /* Keeps the color consistent on hover */
+    }
+    .button2:hover {
+        background-color: rgb(226, 108, 30); /* Slightly lighter or darker shade */
+        box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3); 
+        color: white; 
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #292a2b;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border-top: 5px solid rgb(204, 99, 13);
+    }
+
+    @media screen and (max-width: 600px) {
+        header {
+            padding: 10px;
+        }
+
+        .brand {
+            font-size: 0.6em;
+        }
+
+        .header-logo {
+            height: 30px;
+        }
+
+        .button {
+            font-size: 0.3em;
+        }
+
+        .brand-container {
+            font-size: 0.6em;
+            display: flex;
+            align-items: center;
+        }
+    }
+    .brand {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: rgb(255, 255, 255); /* Sets the text color to black */
+        text-decoration: none; /* Removes the underline */
+        /* Add other styling for the brand text as needed */
+    }
+
+    .header-logo {
+        height: 40px; 
+        width: auto; /* Maintain aspect ratio */
+        margin-right: 10px; /* Space between logo and text */
+    }
+
+    .brand-container {
+        display: flex;
+        align-items: center;
+    }
+
+    
+
+    .brand:hover {
+        text-decoration: none; /* Ensures no underline appears on hover */
+        color: rgb(255, 255, 255); 
+    }
+    nav a.button {
+        margin-left: 10px;
+        color: #ffffff;
+    }
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #212124;
+        color: rgb(204, 99, 13);
+    }
+    td {
+        background-color: #424246;
+        color: rgb(255, 255, 255);
+    }
+    .info-icon {
+        display: inline-block;
+        margin-left: 5px;
+        margin-top: 5px;
+        cursor: help;
+        position: relative; /* Position relative to place the tooltip */
+        color: #ffffff;
+        background-color: rgb(204, 99, 13); /* Circle color */
+        border-radius: 50%; /* Create a circular shape */
+        width: 20px; /* Size of the circle */
+        height: 20px; /* Size of the circle */
+        text-align: center; /* Center the text inside the circle */
+        line-height: 20px; /* Center the text vertically */
+        font-size: 14px;
+        line-height: 20px;
+        vertical-align: middle;
+        transform: translateY(-3px);
+}
+
+h2 {
+    color: rgb(204, 99, 13);
+    margin-left: 20px;
+}
+
+p {
+    margin-left: 20px;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 300px; 
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    font-style: normal; 
+    font-weight: normal;
+
+    /* Positioning */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; 
+    left: 50%;
+    margin-left: -60px; 
+
+    /* Fade in effect */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.info-icon:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+    .scrollable-section {
+        min-height: 150vh; /* Adjust this value as needed to create enough content to scroll */
+        overflow-y: auto; /* Enables vertical scrolling if the content overflows */
+    }
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgb(63, 62, 62);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    form {
+        max-width: 1250px;
+        margin: 50px auto;
+        background-color: #292a2b;
+        padding: 50px;
+        border-radius: 12.5px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    form div {
+        margin-bottom: 25px;
+    }
+    label {
+        display: block;
+        margin-bottom: 12.5px;
+        color: #ffffff;
+        font-size: 22px;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 20px;
+        border: 2.5px solid #ddd;
+        border-radius: 5px;
+        font-size: 22px;
+        box-sizing: border-box;
+    }
+    button {
+        display: block;
+        width: 100%;
+        padding: 25px 0;
+        margin-top: 25px;
+        background-color: rgb(204, 99, 13);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Lato', sans-serif;
+        font-size: 32px;
+        transition: background-color 0.3s ease;
+    }
+    button:hover {
+        background-color: rgb(226, 108, 30);
+    }
+    </style>
+</head>
+<script>
+let line; // Declare 
+let svgContainer; // Declare svgContainer in a higher scope to ensure accessibility
+
+function setupCueBallInteraction() {
+    svgContainer = document.querySelector('svg');
+    const cueBall = document.getElementById('cueball');
+    if (cueBall) {
+        cueBall.addEventListener('mousedown', startDrawingLine);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    setupCueBallInteraction(); // Setup interaction when the document is ready
+});
+
+function startDrawingLine(event) {
+    event.preventDefault(); // Prevent default action
+
+    // Initialize the line element using SVG namespace
+    line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('stroke', 'white');
+    line.setAttribute('stroke-width', '4');
+
+    const startX = event.target.getAttribute('cx');
+    const startY = event.target.getAttribute('cy');
+
+    line.setAttribute('x1', startX);
+    line.setAttribute('y1', startY);
+    line.setAttribute('x2', startX); 
+    line.setAttribute('y2', startY);
+
+    svgContainer.appendChild(line);
+
+    // Add event listeners specifically to document
+    document.addEventListener('mousemove', moveLine);
+    document.addEventListener('mouseup', endLineDrawing); 
+}
+
+function moveLine(event) {
+    const point = svgContainer.createSVGPoint();
+    point.x = event.clientX;
+    point.y = event.clientY;
+    const svgPoint = point.matrixTransform(svgContainer.getScreenCTM().inverse());
+
+    line.setAttribute('x2', svgPoint.x);
+    line.setAttribute('y2', svgPoint.y);
+}
+
+function animateSVG(svgStrings) {
+    console.log("Animating SVGs", svgStrings); // Debugging line
+    let index = 0;
+    const container = document.getElementById('svgContainer');
+
+        function updateSVG() {
+            if (index < svgStrings.length) {
+                container.innerHTML = svgStrings[index]; // Set the innerHTML to the current SVG string
+                index++;
+                setTimeout(updateSVG, 15); // Schedule the next update after 15 milliseconds
+            } else {
+                console.log('Animation completed');
+                setupCueBallInteraction(); 
+            }
+        }
+
+        updateSVG(); // Start the animation loop
+    }
+
+    function endLineDrawing() {
+        // Remove the line when mouseup event occurs, ending the drawing
+        svgContainer.removeChild(line);
+
+        // Convert the final line's endpoint to the relative position within the SVG container
+        const finalX = line.getAttribute('x2');
+        const finalY = line.getAttribute('y2');
+
+        const originalX = line.getAttribute('x1');
+        const originalY = line.getAttribute('y1');
+
+        // Prepare the data to be sent
+        const positionData = {
+            x: finalX,
+            y: finalY,
+            cueX: originalX,
+            cueY: originalY
+        };
+
+        fetch('/display.html', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(positionData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            console.log('SVG String:', data.svgString);
+            console.log('Player Turn:', data.playerTurn);
+            console.log('Low Numbers Player:', data.lowNumbers);
+            console.log('Ball sunk', data.ballSunk);
+            console.log('Player who sunk ball', data.playerSunk);
+            console.log('Winner:', data.Winner );
+            // Use data.svgString for SVG animation
+            animateSVG(data.svgString);
+            updateGameDetails(data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+        function updateGameDetails(data) {
+            // Update the display for the current player's turn
+            const currentPlayerName = data.playerTurn === 1 ? document.getElementById('player1').textContent : document.getElementById('player2').textContent;
+            document.getElementById('currentTurn').textContent = `${currentPlayerName}'s Turn`;
+
+            if (data.ballSunk) {
+                const playerWhoSunkName = data.playerSunk === 1 ? document.getElementById('player1').textContent : document.getElementById('player2').textContent;
+                const ballSunkMessage = `${playerWhoSunkName} sunk ball ${data.ballSunk}`;
+                console.log(ballSunkMessage);
+                document.getElementById('ballSunkInfo').textContent = ballSunkMessage;
+            } else {
+                // Clear the message or handle cases where no ball has been sunk yet
+                document.getElementById('ballSunkInfo').textContent = '';
+            }
+
+            // Handling for lowNumbers and highNumbers
+            if (data.lowNumbers !== null) { // Check if lowNumbers is not null
+                // Assign low/high types based on the lowNumbers player
+                document.getElementById('player1Type').textContent = data.lowNumbers === 1 ? 'Low' : 'High';
+                document.getElementById('player2Type').textContent = data.lowNumbers === 2 ? 'Low' : 'High';
+            } else {
+                // If lowNumbers is null, it means no balls have been sunk to determine low/high yet
+                document.getElementById('player1Type').textContent = '';
+                document.getElementById('player2Type').textContent = '';
+            }
+
+            if (data.Winner !== undefined && data.Winner !== null) {
+                // Data contains a valid winner
+                const winnerName = data.Winner === 1 ? document.getElementById('player1').textContent : document.getElementById('player2').textContent;
+                document.getElementById('winnerInfo').textContent = `${winnerName} Wins!`;
+                document.getElementById('currentTurn').textContent = 'Game Over';
+            } else {
+                // No winner yet, or the data for the winner isn't present or is null
+                document.getElementById('winnerInfo').textContent = '';
+            }
+        }
+
+       
+        document.removeEventListener('mousemove', moveLine);
+        document.removeEventListener('mouseup', endLineDrawing);
+
+}
+
+</script>
+
+<body>
+    <header>
+        <div class="brand-container">
+            <a class="brand">POOL</a>
+        </div>
+    </header>
+    <h2>Game Details</h2>
+    <div class="content-wrapper">
+        <div class="text-content">
+            <h1>Game Details</h1>
+            <p><strong>Player 1 Name:</strong> <span id="player1"></span> <span id="player1Type"></span></p>
+            <p><strong>Player 2 Name:</strong> <span id="player2"></span> <span id="player2Type"></span></p>
+            <p><strong>Game Name:</strong> <span id="game"></span></p>
+            <p><strong>Why is it high or low:</strong> <span id="ballSunkInfo"></span></p>
+            <p><strong>Current Turn:</strong> <span id="currentTurn"></span></p>
+            <p><strong>Winner:</strong> <span id="winnerInfo"></span></p>
+            <div id="valx">x=</div>
+            <div id="valy">y=</div>
+            </div>
+        </div>
+        
+        <div id="svgContainer">
+            <div id="svgPlaceholder"></div>
+        </div>
+
+    <!-- <div id="valx">x=</div>
+    <div id="valy">y=</div> -->
+    <!-- <div id="svgContainer">
+        <div id="svgPlaceholder"></div>
+    </div> -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const player1Name = urlParams.get('player1');
+            const player2Name = urlParams.get('player2');
+            const gameName = urlParams.get('game_name');
+            const playerTurn = urlParams.get('playerTurn');
+
+            document.getElementById('player1').textContent = player1Name;
+            document.getElementById('player2').textContent = player2Name;
+            document.getElementById('game').textContent = gameName;
+            document.getElementById('currentTurn').textContent = `Player ${playerTurn}'s Turn`;
+
+            const svgContainer = document.getElementById('svgContainer');
+            if (svgContainer) {
+                svgContainer.addEventListener('mousemove', trackit);
+            }
+        });
+
+        function trackit(event) {
+            const svgContainer = document.getElementById('svgContainer');
+            const containerOffset = svgContainer.getBoundingClientRect();
+            const relX = event.clientX - containerOffset.left;
+            const relY = event.clientY - containerOffset.top;
+
+            document.getElementById('valx').textContent = "x=" + relX;
+            document.getElementById('valy').textContent = "y=" + relY;
+        }
+    </script>
+</body>
+</html>
